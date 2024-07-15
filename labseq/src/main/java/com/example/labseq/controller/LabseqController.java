@@ -1,19 +1,17 @@
 package com.example.labseq.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import com.example.labseq.service.LabseqService;
 
 @RestController
 @RequestMapping("/labseq")
+@CrossOrigin(origins = "http://localhost:3000") 
 public class LabseqController {
 
     private final LabseqService labseqService;
 
-    @Autowired
     public LabseqController(LabseqService labseqService) {
         this.labseqService = labseqService;
     }

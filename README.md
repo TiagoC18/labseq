@@ -1,48 +1,88 @@
-# Labseq Spring Boot Application Setup Guide
+# Labseq Project
+
+This project consists of two main components:
+1. **Backend**: A Spring Boot application that provides an API to calculate Labseq values.
+2. **Frontend**: A React application that interacts with the backend to display Labseq values to the user.
 
 ## Prerequisites
 
-- **Docker**: Ensure Docker is installed and running on your machine. You can download it from [Docker's official website](https://www.docker.com/get-started).
-- **Maven**: Ensure Maven is installed. You can download it from [Maven's official website](https://maven.apache.org/download.cgi).
-- **Java**: Ensure Java 17 is installed on your machine. You can download it from [AdoptOpenJDK](https://adoptopenjdk.net/).
+Before you start, ensure you have the following installed on your machine:
 
-## Step-by-Step Guide to Launch Spring Boot Application
+- **Java 17**: Download and install from [AdoptOpenJDK](https://adoptopenjdk.net/).
+- **Maven**: Download and install from [Maven's official website](https://maven.apache.org/).
+- **Node.js**: Download and install from [Node.js official website](https://nodejs.org/).
+- **npm**: This comes with Node.js, but you can also install it separately from [npm's official website](https://www.npmjs.com/).
+
+## Backend Setup
 
 ### Step 1: Clone the Repository
 
-First, clone the GitHub repository to your local machine.
+```sh
+git clone <repository-url>
+cd labseq/labseq
+```
 
-### Step 2: Build the Project
+### Step 2: Build the Backend
 
-Navigate to the project directory and build the project using Maven. This will compile the project and run tests.
-
+Navigate to the backend directory and build the project using Maven:
 
 ```sh
 mvn clean package
 ```
 
-### Step 3: Build the Docker Image
-Use the Spring Boot Maven plugin to build a Docker image. This command will package the application into a Docker image using the Paketo buildpacks.
+### Step 3: Run the Backend
+
+Start the Spring Boot application:
 
 ```sh
-mvn spring-boot:build-image
+mvn spring-boot:run
 ```
 
-### Step 4: Run the Docker Container
-Run the Docker container using the Docker image built in the previous step.
+The backend should now be running on `http://localhost:8080`.
+
+## Frontend Setup
+
+### Step 1: Navigate to the Frontend Directory
 
 ```sh
-docker run -p 8080:8080 docker.io/library/labseq:0.0.1-SNAPSHOT
+cd labseq/labseq-frontend
 ```
 
-### Step 5: Access the Application
-Open your web browser and navigate to the following URL to access the application:
+### Step 2: Install Dependencies
 
-- **Application Endpoint:** http://localhost:8080
+Install the necessary npm packages:
 
-### Step 6: Access the Swagger UI
-To access the Swagger UI for API documentation, navigate to the following URL in your web browser:
+```sh
+npm install
+```
 
-- **Swagger UI:** http://localhost:8080/swagger-ui.html
-##### This is what it will look like:
-![Swagger](image.png)
+### Step 3: Run the Frontend
+
+Start the React application:
+
+```sh
+npm start
+```
+
+The frontend should now be running on `http://localhost:3000`.
+
+## Accessing the Application
+
+1. Open your web browser and navigate to `http://localhost:3000` to access the frontend.
+2. Use the input field to enter a value of `n` and click the "Calculate" button.
+3. The frontend will send a request to the backend to calculate the Labseq value for `n` and display the result.
+
+## API Documentation
+
+To access the Swagger UI for API documentation, navigate to the following URL:
+
+[Swagger UI](http://localhost:8080/swagger-ui.html)
+
+
+## License
+
+This project is licensed under the MIT License.
+
+---
+
+By following these instructions, you should be able to set up and run both the backend and frontend components of the Labseq project successfully.
